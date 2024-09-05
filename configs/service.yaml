@@ -1,0 +1,21 @@
+# ****************************************************
+# Licensed Materials - Property of HCL.
+# (c) Copyright HCL Technologies Ltd. 2017, 2024.
+# Note to U.S. Government Users *Restricted Rights.
+# ****************************************************
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: secagent-mutating-webhook
+  namespace: secagent
+spec:
+  selector:
+    app: secagent-mutating-webhook
+  ports:
+    - port: 443
+      targetPort: tls
+      name: application
+    - port: 80
+      targetPort: metrics
+      name: metrics

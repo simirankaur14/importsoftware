@@ -1,0 +1,33 @@
+# ****************************************************
+# Licensed Materials - Property of HCL.
+# (c) Copyright HCL Technologies Ltd. 2017, 2024.
+# Note to U.S. Government Users *Restricted Rights.
+# ****************************************************
+
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: secagent-mutating-webhook
+  namespace: secagent
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: secagent-mutating-webhook
+rules:
+  - apiGroups: ["admissionregistration.k8s.io"]
+    resources: ["mutatingwebhookconfigurations"]
+    verbs: ["create"]
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: secagent-mutating-webhook
+subjects:
+  - kind: ServiceAccount
+    name: secagent-mutating-webhook
+    namespace: secagent
+roleRef:
+  kind: ClusterRole
+  name: secagent-mutating-webhook
+  apiGroup: rbac.authorization.k8s.io

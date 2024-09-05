@@ -1,0 +1,26 @@
+{
+  "agents": ["nodejs"],
+  "podsConfiguration": [
+    {
+      "name": "demo-app-migration-job",
+      "namespace": "default",
+      "ignore": true
+    },
+    {
+      "name": "demo-app-frontend",
+      "namespace": "default",
+      "ignore": true
+    },
+    {
+      "name": "altoroj",
+      "namespace": "default",
+      "agents": ["java"]
+    },
+    {
+      "name": "webgoat",
+      "namespace": "default",
+      "agents": ["net-core"]
+    }
+  ]
+
+}
